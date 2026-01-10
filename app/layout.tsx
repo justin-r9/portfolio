@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Chinonye.",
+  title: "Chinonye Iyidobi",
   description: "Medical Student & Software Engineer Portfolio. Bridging Medicine and Code.",
   icons: {
     icon: '/favicon.ico',
