@@ -35,6 +35,8 @@ Name: ${name}
 Email: ${email}
 Message:
 ${message}
+
+(FROM: ${email})
             `,
             replyTo: email,
         });
