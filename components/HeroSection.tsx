@@ -15,7 +15,7 @@ export default function HeroSection() {
                         transition={{ duration: 0.5 }}
                         className="mb-8 rounded-full bg-blue-50 px-4 py-1.5 text-sm font-medium text-blue-600 dark:bg-blue-900/20 dark:text-blue-400 border border-blue-100 dark:border-blue-900/50"
                     >
-                        Medical Doctor & Software Engineer
+                        Medical Student & Software Engineer
                     </motion.div>
 
                     <motion.h1
