@@ -134,6 +134,9 @@ export default function ContactPage() {
                             <a href="https://www.linkedin.com/in/iyidobice/" target="_blank" rel="noopener noreferrer" className="text-zinc-600 dark:text-zinc-400 hover:text-blue-700 dark:hover:text-blue-500 font-medium">
                                 LinkedIn
                             </a>
+                            <a href="https://github.com/justin-r9/" target="_blank" rel="noopener noreferrer" className="text-zinc-600 dark:text-zinc-400 hover:text-blue-700 dark:hover:text-blue-500 font-medium">
+                                GitHub
+                            </a>
                         </div>
                     </div>
                 </div>
