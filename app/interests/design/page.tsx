@@ -1,12 +1,10 @@
-import ReturnHome from "@/components/ui/ReturnHome";
+import PageNavigation from "@/components/ui/PageNavigation";
 import { DesignIcon } from "@/components/ui/Icons";
 
 export default function DesignPage() {
     return (
         <main className="min-h-screen bg-slate-50 dark:bg-slate-950 flex flex-col items-center justify-center p-4">
-            <div className="mb-8">
-                <ReturnHome />
-            </div>
+            <PageNavigation backUrl="/interests" backLabel="Back to Interests" />
 
             <div className="text-center space-y-4">
                 <div className="inline-flex p-4 rounded-full bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400 mb-4">

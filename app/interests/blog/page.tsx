@@ -1,12 +1,10 @@
-import ReturnHome from "@/components/ui/ReturnHome";
+import PageNavigation from "@/components/ui/PageNavigation";
 import { NewspaperIcon } from "@/components/ui/Icons";
 
 export default function BlogPage() {
     return (
         <main className="min-h-screen bg-slate-50 dark:bg-slate-950 flex flex-col items-center justify-center p-4">
-            <div className="mb-8">
-                <ReturnHome />
-            </div>
+            <PageNavigation backUrl="/interests" backLabel="Back to Interests" />
 
             <div className="text-center space-y-4">
                 <div className="inline-flex p-4 rounded-full bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 mb-4">

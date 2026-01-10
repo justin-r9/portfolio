@@ -9,11 +9,11 @@ interface PageNavigationProps {
 
 export default function PageNavigation({ backUrl, backLabel }: PageNavigationProps) {
     return (
-        <div className="fixed bottom-4 right-4 z-50 sm:top-28 sm:left-8 flex flex-col-reverse sm:flex-col gap-3 opacity-80 hover:opacity-100 transition-opacity print:hidden">
-            {/* Return to Home - Always Visible */}
+        <div className="fixed bottom-4 right-4 z-50 sm:top-28 sm:left-8 flex flex-col-reverse sm:flex-col items-end sm:items-start gap-3 opacity-80 hover:opacity-100 transition-opacity print:hidden pointer-events-none">
+            {/* Return to Home - Always Visible (Enable pointer events for button) */}
             <Link
                 href="/"
-                className="flex items-center justify-center p-3.5 bg-cyan-600 dark:bg-red-600 border border-cyan-500 dark:border-red-500 rounded-full shadow-xl hover:bg-cyan-500 dark:hover:bg-red-500 hover:scale-110 transition-all group"
+                className="pointer-events-auto flex items-center justify-center p-3.5 bg-cyan-600 dark:bg-red-600 border border-cyan-500 dark:border-red-500 rounded-full shadow-xl hover:bg-cyan-500 dark:hover:bg-red-500 hover:scale-110 transition-all group"
                 title="Return to Home"
             >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="white" className="w-6 h-6">
@@ -25,7 +25,7 @@ export default function PageNavigation({ backUrl, backLabel }: PageNavigationPro
             {backUrl && (
                 <Link
                     href={backUrl}
-                    className="flex items-center justify-center p-3 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200 dark:border-slate-800 rounded-full shadow-md hover:bg-white dark:hover:bg-slate-900 hover:shadow-lg transition-all group"
+                    className="pointer-events-auto flex items-center justify-center p-3 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200 dark:border-slate-800 rounded-full shadow-md hover:bg-white dark:hover:bg-slate-900 hover:shadow-lg transition-all group"
                     title={backLabel || "Go Back"}
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 text-slate-700 dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400">
