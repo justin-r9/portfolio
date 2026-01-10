@@ -24,7 +24,7 @@ export default function PhotoGrid({ photos }: PhotoGridProps) {
 
     return (
         <>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+            <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 sm:gap-6">
                 {photos.map((photo, index) => (
                     <motion.div
                         key={photo.id}
@@ -39,7 +39,7 @@ export default function PhotoGrid({ photos }: PhotoGridProps) {
                             src={photo.src}
                             alt={photo.alt}
                             fill
-                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 25vw, 20vw"
+                            sizes="(max-width: 640px) 33vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 20vw"
                             className="object-cover transition-transform duration-500"
                             placeholder={photo.blurDataURL ? 'blur' : undefined}
                             blurDataURL={photo.blurDataURL}
