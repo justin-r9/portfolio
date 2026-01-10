@@ -3,7 +3,7 @@ import { NewspaperIcon } from "@/components/ui/Icons";
 
 export default function BlogPage() {
     return (
-        <main className="min-h-screen bg-slate-50 dark:bg-slate-950 flex flex-col items-center justify-center p-4">
+        <main className="h-[calc(100vh-81px)] w-full bg-slate-50 dark:bg-slate-950 overflow-hidden flex flex-col items-center justify-center relative p-4">
             <PageNavigation backUrl="/interests" backLabel="Back to Interests" />
 
             <div className="text-center space-y-4">
