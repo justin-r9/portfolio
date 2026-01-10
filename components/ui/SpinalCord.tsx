@@ -21,15 +21,15 @@ export default function SpinalCord({ milestones }: SpinalCordProps) {
                     key={milestone.id}
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.5, delay: index * 0.2 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
                     className="relative"
                 >
                     {/* Node */}
                     <motion.div
                         initial={{ scale: 0 }}
                         whileInView={{ scale: 1 }}
-                        transition={{ duration: 0.3, delay: 0.1 + (index * 0.2) }}
+                        transition={{ duration: 0.3, delay: index * 0.1 }}
                         className="absolute -left-[49px] top-1.5 h-5 w-5 rounded-full border-4 border-white dark:border-slate-950 bg-blue-500 shadow-md z-10"
                     />
 

@@ -38,14 +38,12 @@ async function getProjectsByCategory(categoryTitle: string) {
       status
     }`, { category: categoryTitle });
 
-        // Sanity might return empty. Fallback to mock data filtering.
-        if (projects.length > 0) return projects;
-
-        return mockProjects.filter(p => p.category === categoryTitle);
+        // Sanity might return empty.
+        return projects;
 
     } catch (error) {
         console.error("Error fetching projects:", error);
-        return mockProjects.filter(p => p.category === categoryTitle);
+        return [];
     }
 }
 
@@ -109,8 +107,20 @@ export default async function CategoryPage(props: Props) {
                     })}
 
                     {projects.length === 0 && (
-                        <div className="col-span-full py-12 text-center text-slate-500">
-                            <p>No projects found in this category.</p>
+                        <div className="col-span-full flex flex-col items-center justify-center py-20 text-center animate-in fade-in zoom-in duration-700">
+                            <div className="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm max-w-md">
+                                <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 mb-6">
+                                    <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                                    </svg>
+                                </div>
+                                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2">
+                                    Case Studies in Progress
+                                </h3>
+                                <p className="text-slate-600 dark:text-slate-400">
+                                    Detailed breakdowns of my work in {categoryTitle.toLowerCase()} are currently being documented. Check back soon!
+                                </p>
+                            </div>
                         </div>
                     )}
                 </div>
