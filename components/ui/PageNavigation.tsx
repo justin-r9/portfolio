@@ -9,7 +9,7 @@ interface PageNavigationProps {
 
 export default function PageNavigation({ backUrl, backLabel }: PageNavigationProps) {
     return (
-        <div className="fixed bottom-8 right-8 z-50 sm:top-28 sm:left-8 flex flex-col-reverse sm:flex-col items-end sm:items-start gap-3 opacity-80 hover:opacity-100 transition-opacity print:hidden pointer-events-none">
+        <div className="fixed bottom-20 right-8 z-50 sm:top-28 sm:left-8 flex flex-col-reverse sm:flex-col items-end sm:items-start gap-3 opacity-80 hover:opacity-100 transition-opacity print:hidden pointer-events-none">
             {/* Return to Home - Always Visible (Enable pointer events for button) */}
             <Link
                 href="/"
