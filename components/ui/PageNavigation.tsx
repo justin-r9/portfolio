@@ -9,11 +9,11 @@ interface PageNavigationProps {
 
 export default function PageNavigation({ backUrl, backLabel }: PageNavigationProps) {
     return (
-        <div className="fixed top-24 left-4 z-50 sm:top-28 sm:left-8 flex flex-col gap-3 opacity-80 hover:opacity-100 transition-opacity print:hidden">
+        <div className="fixed bottom-4 right-4 z-50 sm:top-28 sm:left-8 flex flex-col-reverse sm:flex-col gap-3 opacity-80 hover:opacity-100 transition-opacity print:hidden">
             {/* Return to Home - Always Visible */}
             <Link
                 href="/"
-                className="flex items-center justify-center p-3.5 bg-cyan-600 dark:bg-cyan-700 border border-cyan-500 dark:border-cyan-600 rounded-full shadow-xl hover:bg-cyan-500 dark:hover:bg-cyan-600 hover:scale-110 transition-all group"
+                className="flex items-center justify-center p-3.5 bg-cyan-600 dark:bg-red-600 border border-cyan-500 dark:border-red-500 rounded-full shadow-xl hover:bg-cyan-500 dark:hover:bg-red-500 hover:scale-110 transition-all group"
                 title="Return to Home"
             >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="white" className="w-6 h-6">

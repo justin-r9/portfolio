@@ -49,7 +49,7 @@ export default function Navbar() {
                 {/* Logo */}
                 <Link href="/" className="flex items-center space-x-2 group">
                     <span className="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-50 transition-colors group-hover:text-blue-600 dark:group-hover:text-blue-400">
-                        Chinonye<span className="text-blue-600">.</span>
+                        Chinonye <span className="text-blue-600 dark:text-blue-400">Iyidobi</span>
                     </span>
                 </Link>
 
