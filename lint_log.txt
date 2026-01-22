@@ -3,24 +3,22 @@
 > eslint
 
 
-C:\Users\Chinonye\Documents\Projects\portfolio\app\blog\page.tsx
-  26:33  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
-  56:39  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+C:\Users\Chinonye\Documents\Projects\portfolio\app\interests\chess\page.tsx
+  49:53  warning  'e' is defined but never used  @typescript-eslint/no-unused-vars
 
-C:\Users\Chinonye\Documents\Projects\portfolio\app\hobbies\page.tsx
-  104:43  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+C:\Users\Chinonye\Documents\Projects\portfolio\app\interests\page.tsx
+  2:10  warning  'motion' is defined but never used  @typescript-eslint/no-unused-vars
 
-C:\Users\Chinonye\Documents\Projects\portfolio\app\page.tsx
-  4:8   warning  'Link' is defined but never used    @typescript-eslint/no-unused-vars
-  5:10  warning  'motion' is defined but never used  @typescript-eslint/no-unused-vars
+C:\Users\Chinonye\Documents\Projects\portfolio\app\interests\writing\page.tsx
+  12:16  warning  'getQuoraStats' is defined but never used  @typescript-eslint/no-unused-vars
 
 C:\Users\Chinonye\Documents\Projects\portfolio\app\work\[category]\page.tsx
-  75:45  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  3:22  warning  'mockProjects' is defined but never used  @typescript-eslint/no-unused-vars
+  5:8   warning  'Link' is defined but never used          @typescript-eslint/no-unused-vars
 
-C:\Users\Chinonye\Documents\Projects\portfolio\components\ui\Navbar.tsx
-   5:31  warning  'useMemo' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 @typescript-eslint/no-unused-vars
-  19:13  warning  'theme' is assigned a value but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          @typescript-eslint/no-unused-vars
-  23:9   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+C:\Users\Chinonye\Documents\Projects\portfolio\components\ThemeWrapper.tsx
+   7:20  warning  'resolvedTheme' is assigned a value but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         @typescript-eslint/no-unused-vars
+  11:9   error    Error: Calling setState synchronously within an effect can trigger cascading renders
 
 Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
 * Update external systems with the latest state from React.
@@ -28,17 +26,51 @@ Effects are intended to synchronize state between React and external systems suc
 
 Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
 
-C:\Users\Chinonye\Documents\Projects\portfolio\components\ui\Navbar.tsx:23:9
-  21 |
-  22 |     useEffect(() => {
-> 23 |         setMounted(true);
+C:\Users\Chinonye\Documents\Projects\portfolio\components\ThemeWrapper.tsx:11:9
+   9 |
+  10 |     useEffect(() => {
+> 11 |         setMounted(true);
      |         ^^^^^^^^^^ Avoid calling setState() directly within an effect
-  24 |     }, []);
-  25 |
-  26 |     const toggleTheme = () => {  react-hooks/set-state-in-effect
+  12 |     }, []);
+  13 |
+  14 |     if (!mounted) {  react-hooks/set-state-in-effect
 
-C:\Users\Chinonye\Documents\Projects\portfolio\components\ui\ReturnHome.tsx
-  2:10  warning  'ArrowLeftIcon' is defined but never used  @typescript-eslint/no-unused-vars
+C:\Users\Chinonye\Documents\Projects\portfolio\components\ui\Lightbox.tsx
+  32:13  error  Error: Calling setState synchronously within an effect can trigger cascading renders
 
-✖ 10 problems (5 errors, 5 warnings)
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\Chinonye\Documents\Projects\portfolio\components\ui\Lightbox.tsx:32:13
+  30 |     useEffect(() => {
+  31 |         if (isOpen) {
+> 32 |             setCurrentIndex(initialIndex);
+     |             ^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  33 |             setDirection(0);
+  34 |         }
+  35 |     }, [isOpen, initialIndex]);  react-hooks/set-state-in-effect
+
+C:\Users\Chinonye\Documents\Projects\portfolio\components\ui\Navbar.tsx
+   5:31  warning  'useMemo' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               @typescript-eslint/no-unused-vars
+  25:9   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\Chinonye\Documents\Projects\portfolio\components\ui\Navbar.tsx:25:9
+  23 |
+  24 |     useEffect(() => {
+> 25 |         setMounted(true);
+     |         ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  26 |     }, []);
+  27 |
+  28 |     // Close theme menu when clicking outside  react-hooks/set-state-in-effect
+
+Γ£û 10 problems (3 errors, 7 warnings)
 

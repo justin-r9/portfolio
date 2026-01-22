@@ -1,52 +1,35 @@
 
 import { NextResponse } from 'next/server';
-import { Resend } from 'resend';
+import nodemailer from 'nodemailer';
 
-// Initialize Resend with API Key from environment variables
-const resendApiKey = process.env.RESEND_API_KEY;
-const resend = resendApiKey ? new Resend(resendApiKey) : null;
+export async function POST(req: Request) {
+  try {
+    // 1. Data extraction remains standard to match the form
+    const { name, email, message } = await req.json();
 
-export async function POST(request: Request) {
-    try {
-        const body = await request.json();
-        const { name, email, message } = body;
+    // 2. Transporter configuration using environment variables
+    const transporter = nodemailer.createTransport({
+      host: process.env.ZEPTO_HOST, // e.g., smtp.zeptomail.com
+      port: Number(process.env.ZEPTO_PORT), // e.g., 587
+      secure: false, // Must be false for Port 587 (STARTTLS)
+      auth: {
+        user: process.env.ZEPTO_USER, // e.g., emailapikey
+        pass: process.env.ZEPTO_PASS, // The "Password 1" from your screenshot
+      },
+    });
 
-        if (!name || !email || !message) {
-            return NextResponse.json(
-                { error: 'Missing required fields' },
-                { status: 400 }
-            );
-        }
+    // 3. Automated dispatch
+    await transporter.sendMail({
+      from: `"Iyidobi Portfolio" <${process.env.SENDER_EMAIL}>`, // contact@iyidobi.com
+      to: process.env.RECEIVER_EMAIL, // Your professional inbox
+      replyTo: email, // Directly reply to the inquirer
+      subject: `New Inquiry from ${name}`,
+      text: `Inquiry Details:\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
+    });
 
-        if (!resend) {
-            console.warn('RESEND_API_KEY is missing. Simulating email send.');
-            // Simulate network delay
-            await new Promise(resolve => setTimeout(resolve, 1000));
-            return NextResponse.json({ id: 'mock-id', message: 'Email simulated (missing API key)' });
-        }
-
-        // Send email
-        const data = await resend.emails.send({
-            from: 'Contact Form <contact@iyidobi.com>',
-            to: ['iyidobice@gmail.com'],
-            subject: `CONTACT FROM PORTFOLIO`,
-            text: `
-Name: ${name}
-Email: ${email}
-Message:
-${message}
-
-(FROM: ${email})
-            `,
-            replyTo: email,
-        });
-
-        return NextResponse.json(data);
-    } catch (error) {
-        console.error('Resend Error:', error);
-        return NextResponse.json(
-            { error: 'Internal Server Error' },
-            { status: 500 }
-        );
-    }
+    return NextResponse.json({ success: true }, { status: 200 });
+  } catch (error) {
+    console.error("Vercel Backend Error:", error);
+    return NextResponse.json({ success: false }, { status: 500 });
+  }
 }
