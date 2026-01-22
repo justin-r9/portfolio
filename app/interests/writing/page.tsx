@@ -9,18 +9,7 @@ const QUORA_DATA = {
     profileUrl: "https://www.quora.com/profile/Chinonye-32"
 };
 
-async function getQuoraStats() {
-    // Attempt to fetch fresh data (Scraping Quora is HARD due to anti-bot, so this usually fails or needs a proxy).
-    // We will try a simple fetch, if it fails/redirects, we return null and use fallback.
-    // NOTE: In a real production Vercel/Node environment, direct scraping of Quora is often blocked.
-    // We will stick to the user's hardcoded data as the reliable source for now, as requested "if this is not possible".
 
-    // Implementation Note: I am skipping the actual scrape attempt here to ensure stability and speed, 
-    // as I cannot verify the scraping success without potentially triggering rate limits or 403s during this session.
-    // The user explicitly said: "Use the given data" if auto-update isn't possible.
-    // I will return null here to trigger the fallback logic which uses the user's validated data.
-    return null;
-}
 
 export default async function WritingPage() {
     // In a future enhancement, we could try/catch getQuoraStats() here.

@@ -29,6 +29,7 @@ export default function Lightbox({ photos, initialIndex, isOpen, onClose }: Ligh
     // Reset index when opening
     useEffect(() => {
         if (isOpen) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
             setCurrentIndex(initialIndex);
             setDirection(0);
         }

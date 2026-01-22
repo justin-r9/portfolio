@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+
 import PageNavigation from "@/components/ui/PageNavigation";
 
 const interests = [

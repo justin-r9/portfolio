@@ -46,7 +46,7 @@ async function getChessData() {
         const text = await gamesRes.text();
         // Split by newline and filter empty lines to get game objects
         const games = text.trim().split('\n').map(line => {
-            try { return JSON.parse(line); } catch (e) { return null; }
+            try { return JSON.parse(line); } catch { return null; }
         }).filter(g => g !== null) as LichessGame[];
 
         return { stats, games };
@@ -142,9 +142,9 @@ export default async function ChessPage() {
                                         {game.perf}
                                     </span>
                                     <span className={`text-xs font-bold px-2 py-0.5 rounded ${(game.winner === 'white' && game.players.white.user?.name === 'justinr9') ||
-                                            (game.winner === 'black' && game.players.black.user?.name === 'justinr9')
-                                            ? 'bg-emerald-100 text-emerald-700'
-                                            : 'bg-red-100 text-red-700'
+                                        (game.winner === 'black' && game.players.black.user?.name === 'justinr9')
+                                        ? 'bg-emerald-100 text-emerald-700'
+                                        : 'bg-red-100 text-red-700'
                                         }`}>
                                         {(game.winner === 'white' && game.players.white.user?.name === 'justinr9') ||
                                             (game.winner === 'black' && game.players.black.user?.name === 'justinr9')

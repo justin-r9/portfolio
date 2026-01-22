@@ -1,8 +1,8 @@
 import { client } from "@/sanity/lib/client";
 import ComingSoonBadge from "@/components/ui/ComingSoonBadge";
-import { projects as mockProjects } from "@/lib/mockData";
+
 import Image from "next/image";
-import Link from "next/link";
+
 import { notFound } from "next/navigation";
 import PageNavigation from "@/components/ui/PageNavigation";
 
