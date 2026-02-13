@@ -10,7 +10,7 @@ import PageNavigation from "@/components/ui/PageNavigation";
 export const revalidate = 60;
 
 // Type definition for valid categories
-type CategorySlug = "data-analysis" | "automation";
+type CategorySlug = "web-design" | "graphic-design";
 
 interface Project {
     id: string;
@@ -22,8 +22,8 @@ interface Project {
 }
 
 const CATEGORY_MAP: Record<CategorySlug, string> = {
-    "data-analysis": "Data Analysis",
-    "automation": "Automation"
+    "web-design": "Web Design",
+    "graphic-design": "Graphic Design"
 };
 
 async function getProjectsByCategory(categoryTitle: string) {
