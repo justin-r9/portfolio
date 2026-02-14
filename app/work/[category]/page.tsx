@@ -17,6 +17,7 @@ interface Project {
     title: string;
     category: string;
     imageUrl: string;
+    blurDataURL?: string;
     slug: string;
     status: string;
     description?: string;
@@ -40,6 +41,7 @@ async function getProjectsByCategory(categoryTitle: string) {
       title,
       category,
       "imageUrl": image.asset->url,
+      "blurDataURL": image.asset->metadata.lqip,
       "slug": slug.current,
       status,
       description,
@@ -97,7 +99,11 @@ export default async function CategoryPage(props: Props) {
                                 {/* Image Section */}
                                 <div className="flex-1">
                                     <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-slate-200 dark:bg-slate-800 shadow-xl border border-slate-200 dark:border-slate-800">
-                                        <ProjectImage src={project.imageUrl} alt={project.title} />
+                                        <ProjectImage
+                                            src={project.imageUrl}
+                                            alt={project.title}
+                                            blurDataURL={project.blurDataURL}
+                                        />
                                     </div>
                                 </div>
 
@@ -177,10 +183,18 @@ export default async function CategoryPage(props: Props) {
                                     <div className="relative aspect-square w-full overflow-hidden bg-slate-200 dark:bg-slate-800">
                                         {isComingSoon ? (
                                             <ComingSoonBadge>
-                                                <ProjectImage src={project.imageUrl} alt={project.title} />
+                                                <ProjectImage
+                                                    src={project.imageUrl}
+                                                    alt={project.title}
+                                                    blurDataURL={project.blurDataURL}
+                                                />
                                             </ComingSoonBadge>
                                         ) : (
-                                            <ProjectImage src={project.imageUrl} alt={project.title} />
+                                            <ProjectImage
+                                                src={project.imageUrl}
+                                                alt={project.title}
+                                                blurDataURL={project.blurDataURL}
+                                            />
                                         )}
                                     </div>
                                     <div className="p-5">
@@ -217,12 +231,14 @@ export default async function CategoryPage(props: Props) {
     );
 }
 
-function ProjectImage({ src, alt }: { src: string, alt: string }) {
+function ProjectImage({ src, alt, blurDataURL }: { src: string, alt: string, blurDataURL?: string }) {
     return (
         <Image
             src={src || "https://placehold.co/600x400/png?text=Project+Preview"}
             alt={alt}
             fill
+            placeholder={blurDataURL ? "blur" : "empty"}
+            blurDataURL={blurDataURL}
             className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
     )
