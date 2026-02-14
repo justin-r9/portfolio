@@ -24,8 +24,7 @@ interface Project {
     liveSiteUrl?: string;
     sourceCodeUrl?: string;
     techStack?: string[];
-    year?: string;
-    role?: string;
+
 }
 
 const CATEGORY_MAP: Record<CategorySlug, string> = {
@@ -48,8 +47,7 @@ async function getProjectsByCategory(categoryTitle: string) {
       liveSiteUrl,
       sourceCodeUrl,
       techStack,
-      year,
-      role
+
     }`, { category: categoryTitle });
 
         // Sanity might return empty.
@@ -109,19 +107,7 @@ export default async function CategoryPage(props: Props) {
 
                                 {/* Content Section */}
                                 <div className="flex-1 lg:pl-10">
-                                    <div className="flex items-center gap-2 mb-4">
-                                        <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
-                                            {project.role || 'Full Stack'}
-                                        </span>
-                                        {project.year && (
-                                            <>
-                                                <span className="text-slate-300 dark:text-slate-700">•</span>
-                                                <span className="text-xs font-medium text-slate-500 dark:text-slate-500">
-                                                    {project.year}
-                                                </span>
-                                            </>
-                                        )}
-                                    </div>
+
 
                                     <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-50 mb-4">
                                         {project.title}

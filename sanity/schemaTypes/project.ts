@@ -74,15 +74,6 @@ export const project = defineType({
             type: 'array',
             of: [{ type: 'string' }],
         }),
-        defineField({ // Optional: Add year if needed for sorting or display
-            name: 'year',
-            title: 'Year',
-            type: 'string',
-        }),
-        defineField({ // Optional: Add role (e.g. Full Stack, Mobile Engineering)
-            name: 'role',
-            title: 'Role',
-            type: 'string',
-        }),
+
     ],
 })
