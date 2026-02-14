@@ -4,9 +4,7 @@ A curated portfolio website showcasing engineering projects, creative design, an
 
 ## ✨ Features
 
-- **Work Showcase**:
-  - **Web Design**: Detailed case studies of engineering challenges and web solutions.
-  - **Graphic Design**: Visual gallery of branding, posters, and flyers.
+- **Work Showcase (Web Design)**: Detailed case studies of engineering challenges and web solutions.
 - **Photography Interface**: A custom photo grid integrated with Sanity for easy management.
 - **Dynamic Content**: Powered by Sanity CMS for real-time updates without code changes.
 - **Responsive Design**: Mobile-first architecture with smooth transitions and animations.
@@ -64,9 +62,8 @@ This project uses an embedded Sanity Studio.
 1.  Navigate to [http://localhost:3000/studio](http://localhost:3000/studio).
 2.  Login with your Sanity credentials.
 3.  You can manage:
-    - **Projects**: (Web Design, Graphic Design)
+    - **Projects**: Web Design showcase.
     - **Photos**: Upload and categorize photography.
-    - **Posts**: Blog content (if enabled).
 
 ### Deployment
 
