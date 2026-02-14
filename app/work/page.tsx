@@ -19,7 +19,7 @@ export default function WorkPage() {
                 <div className="relative z-10 text-center p-8">
                     <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight">Web Design</h2>
                     <p className="text-blue-100 text-lg md:text-xl max-w-md mx-auto opacity-0 transform translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
-                        creating websites for your brand type shi
+                        Crafting immersive digital experiences.
                     </p>
                     <div className="mt-8 inline-flex items-center rounded-full bg-white/20 px-6 py-2 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:bg-white/30 opacity-0 group-hover:opacity-100 duration-300">
                         Explore Projects &rarr;
@@ -38,7 +38,7 @@ export default function WorkPage() {
                 <div className="relative z-10 text-center p-8">
                     <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight">Graphic Design</h2>
                     <p className="text-indigo-100 text-lg md:text-xl max-w-md mx-auto opacity-0 transform translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
-                        creating posters, flyers, etc
+                        Visual identity and creative branding.
                     </p>
                     <div className="mt-8 inline-flex items-center rounded-full bg-white/20 px-6 py-2 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:bg-white/30 opacity-0 group-hover:opacity-100 duration-300">
                         View Solutions &rarr;

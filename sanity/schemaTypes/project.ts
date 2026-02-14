@@ -27,10 +27,8 @@ export const project = defineType({
             type: 'string',
             options: {
                 list: [
-                    { title: 'Automation', value: 'Automation' },
-                    { title: 'Data Analysis', value: 'Data Analysis' },
-                    // Add other categories as needed or make it a free string if preferred, 
-                    // but blueprint implies specific categorization.
+                    { title: 'Web Design', value: 'Web Design' },
+                    { title: 'Graphic Design', value: 'Graphic Design' },
                 ],
             },
         }),
@@ -59,6 +57,32 @@ export const project = defineType({
             name: 'description',
             title: 'Description',
             type: 'text',
+        }),
+        defineField({
+            name: 'liveSiteUrl',
+            title: 'Live Site URL',
+            type: 'url',
+        }),
+        defineField({
+            name: 'sourceCodeUrl',
+            title: 'Source Code URL',
+            type: 'url',
+        }),
+        defineField({
+            name: 'techStack',
+            title: 'Tech Stack',
+            type: 'array',
+            of: [{ type: 'string' }],
+        }),
+        defineField({ // Optional: Add year if needed for sorting or display
+            name: 'year',
+            title: 'Year',
+            type: 'string',
+        }),
+        defineField({ // Optional: Add role (e.g. Full Stack, Mobile Engineering)
+            name: 'role',
+            title: 'Role',
+            type: 'string',
         }),
     ],
 })

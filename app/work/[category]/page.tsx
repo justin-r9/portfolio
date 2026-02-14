@@ -19,6 +19,12 @@ interface Project {
     imageUrl: string;
     slug: string;
     status: string;
+    description?: string;
+    liveSiteUrl?: string;
+    sourceCodeUrl?: string;
+    techStack?: string[];
+    year?: string;
+    role?: string;
 }
 
 const CATEGORY_MAP: Record<CategorySlug, string> = {
@@ -33,9 +39,15 @@ async function getProjectsByCategory(categoryTitle: string) {
       "id": _id,
       title,
       category,
-      "imageUrl": mainImage.asset->url,
+      "imageUrl": image.asset->url,
       "slug": slug.current,
-      status
+      status,
+      description,
+      liveSiteUrl,
+      sourceCodeUrl,
+      techStack,
+      year,
+      role
     }`, { category: categoryTitle });
 
         // Sanity might return empty.
@@ -69,64 +81,137 @@ export default async function CategoryPage(props: Props) {
                 <div className="mb-12 text-center">
                     <PageNavigation backUrl="/work" backLabel="Back to Work" />
                     <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-50 sm:text-4xl">
-                        {categoryTitle} Projects
+                        {categoryTitle}
                     </h1>
                     <p className="mt-4 text-lg text-slate-600 dark:text-slate-400">
-                        Selected works in {categoryTitle.toLowerCase()}.
+                        {categorySlug === 'web-design'
+                            ? "A curated archive of engineering challenges solved."
+                            : "Visual storytelling through design."}
                     </p>
                 </div>
 
-                <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                    {projects.map((project: Project) => {
-                        const isComingSoon = project.status === 'Coming Soon' || true; // Default to badge active for visual demo based on requirement "Items are overlaid..."
-
-                        return (
-                            <div key={project.id} className="group relative flex flex-col overflow-hidden rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-lg transition-shadow duration-300">
-                                {/* Card Image */}
-                                <div className="relative aspect-video w-full overflow-hidden bg-slate-200 dark:bg-slate-800">
-                                    {isComingSoon ? (
-                                        <ComingSoonBadge>
-                                            <ProjectImage src={project.imageUrl} alt={project.title} />
-                                        </ComingSoonBadge>
-                                    ) : (
+                {categorySlug === 'web-design' ? (
+                    <div className="space-y-20">
+                        {projects.map((project: Project, index: number) => (
+                            <div key={project.id} className={`flex flex-col gap-12 lg:items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}>
+                                {/* Image Section */}
+                                <div className="flex-1">
+                                    <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-slate-200 dark:bg-slate-800 shadow-xl border border-slate-200 dark:border-slate-800">
                                         <ProjectImage src={project.imageUrl} alt={project.title} />
-                                    )}
+                                    </div>
                                 </div>
 
-                                {/* Card Content */}
-                                <div className="p-5">
-                                    <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2 block uppercase tracking-wide">
-                                        {project.category}
-                                    </span>
-                                    <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100">
+                                {/* Content Section */}
+                                <div className="flex-1 lg:pl-10">
+                                    <div className="flex items-center gap-2 mb-4">
+                                        <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+                                            {project.role || 'Full Stack'}
+                                        </span>
+                                        {project.year && (
+                                            <>
+                                                <span className="text-slate-300 dark:text-slate-700">•</span>
+                                                <span className="text-xs font-medium text-slate-500 dark:text-slate-500">
+                                                    {project.year}
+                                                </span>
+                                            </>
+                                        )}
+                                    </div>
+
+                                    <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-50 mb-4">
                                         {project.title}
-                                    </h3>
-                                </div>
-                            </div>
-                        );
-                    })}
+                                    </h2>
 
-                    {projects.length === 0 && (
-                        <div className="col-span-full flex flex-col items-center justify-center py-20 text-center animate-in fade-in zoom-in duration-700">
-                            <div className="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm max-w-md">
-                                <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 mb-6">
-                                    <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                                    </svg>
+                                    <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
+                                        {project.description || "Project description coming soon."}
+                                    </p>
+
+                                    {project.techStack && (
+                                        <div className="flex flex-wrap gap-2 mb-8">
+                                            {project.techStack.map((tech) => (
+                                                <span key={tech} className="inline-flex items-center rounded-md bg-slate-100 dark:bg-slate-800 px-3 py-1 text-sm font-medium text-slate-700 dark:text-slate-300">
+                                                    {tech}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    )}
+
+                                    <div className="flex flex-wrap gap-4">
+                                        {project.liveSiteUrl && (
+                                            <a
+                                                href={project.liveSiteUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors"
+                                            >
+                                                Visit Live Site
+                                                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                                </svg>
+                                            </a>
+                                        )}
+                                        {project.sourceCodeUrl && (
+                                            <a
+                                                href={project.sourceCodeUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="inline-flex items-center gap-2 rounded-full bg-white dark:bg-slate-900 px-6 py-2.5 text-sm font-semibold text-slate-900 dark:text-slate-100 shadow-sm ring-1 ring-inset ring-slate-300 dark:ring-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+                                            >
+                                                Source Code
+                                                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                                                </svg>
+                                            </a>
+                                        )}
+                                    </div>
                                 </div>
-                                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2">
-                                    Case Studies in Progress
-                                </h3>
-                                <p className="text-slate-600 dark:text-slate-400">
-                                    Detailed breakdowns of my work in {categoryTitle.toLowerCase()} are currently being documented. Check back soon!
-                                </p>
                             </div>
+                        ))}
+                    </div>
+                ) : (
+                    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                        {/* Graphic Design / Other Categories Layout - Retaining coming soon or grid style */}
+                        {projects.map((project: Project) => {
+                            const isComingSoon = project.status === 'Coming Soon';
+                            return (
+                                <div key={project.id} className="group relative flex flex-col overflow-hidden rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-lg transition-shadow duration-300">
+                                    <div className="relative aspect-square w-full overflow-hidden bg-slate-200 dark:bg-slate-800">
+                                        {isComingSoon ? (
+                                            <ComingSoonBadge>
+                                                <ProjectImage src={project.imageUrl} alt={project.title} />
+                                            </ComingSoonBadge>
+                                        ) : (
+                                            <ProjectImage src={project.imageUrl} alt={project.title} />
+                                        )}
+                                    </div>
+                                    <div className="p-5">
+                                        <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100">
+                                            {project.title}
+                                        </h3>
+                                        <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+                                            {project.description}
+                                        </p>
+                                    </div>
+                                </div>
+                            )
+                        })}
+                    </div>
+                )}
+
+                {projects.length === 0 && (
+                    <div className="mt-20 flex flex-col items-center justify-center text-center">
+                        <div className="rounded-full bg-slate-100 dark:bg-slate-800 p-4 mb-4">
+                            <svg className="h-8 w-8 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                            </svg>
                         </div>
-                    )}
-                </div>
-
-                <div className="mt-12">
-                </div>
+                        <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
+                            No projects found
+                        </h3>
+                        <p className="mt-2 text-slate-600 dark:text-slate-400 max-w-sm">
+                            Projects for {categoryTitle} are currently being added to the archives. Please check back shortly.
+                        </p>
+                    </div>
+                )}
             </div>
         </main>
     );
@@ -135,7 +220,7 @@ export default async function CategoryPage(props: Props) {
 function ProjectImage({ src, alt }: { src: string, alt: string }) {
     return (
         <Image
-            src={src}
+            src={src || "https://placehold.co/600x400/png?text=Project+Preview"}
             alt={alt}
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-105"
