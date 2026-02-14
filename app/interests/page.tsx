@@ -4,22 +4,6 @@ import PageNavigation from "@/components/ui/PageNavigation";
 
 const interests = [
     {
-        id: 'blog',
-        title: 'The Cortex',
-        description: 'Thoughts on FC Barcelona, Books, and Musings.',
-        href: '/interests/blog',
-        color: 'bg-blue-600',
-        textColor: 'text-blue-600',
-        bgLight: 'bg-blue-50',
-        bgDark: 'dark:bg-blue-900/20',
-        border: 'border-blue-200',
-        icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-            </svg>
-        )
-    },
-    {
         id: 'chess',
         title: 'Chess',
         description: 'Blunders, Gambits, and Lichess Ratings.',
@@ -48,38 +32,6 @@ const interests = [
         icon: (
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-            </svg>
-        )
-    },
-    {
-        id: 'design',
-        title: 'Graphic Design',
-        description: 'Creative works and visual art.',
-        href: '/interests/design',
-        color: 'bg-purple-600',
-        textColor: 'text-purple-600',
-        bgLight: 'bg-purple-50',
-        bgDark: 'dark:bg-purple-900/20',
-        border: 'border-purple-200',
-        icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
-            </svg>
-        )
-    },
-    {
-        id: 'video',
-        title: 'Video Editing',
-        description: 'Motion graphics and edits.',
-        href: '/interests/video',
-        color: 'bg-rose-600',
-        textColor: 'text-rose-600',
-        bgLight: 'bg-rose-50',
-        bgDark: 'dark:bg-rose-900/20',
-        border: 'border-rose-200',
-        icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-8">
-                <path strokeLinecap="round" strokeLinejoin="round" d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z" />
             </svg>
         )
     },

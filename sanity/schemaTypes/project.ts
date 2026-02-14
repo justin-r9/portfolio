@@ -21,17 +21,7 @@ export const project = defineType({
             },
             validation: (Rule) => Rule.required(),
         }),
-        defineField({
-            name: 'category',
-            title: 'Category',
-            type: 'string',
-            options: {
-                list: [
-                    { title: 'Web Design', value: 'Web Design' },
-                    { title: 'Graphic Design', value: 'Graphic Design' },
-                ],
-            },
-        }),
+
         defineField({
             name: 'status',
             title: 'Status',
